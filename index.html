@@ -5,8 +5,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marketing & Regulated Materials Dashboard (2026 Plan)</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  <!-- Charts -->
+
+  <!-- Chart.js (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
@@ -24,7 +27,6 @@
   </header>
 
   <main class="container">
-    <!-- Auto-generated KPI cards -->
     <section class="grid" id="kpiGrid"></section>
 
     <section class="card">
@@ -89,6 +91,7 @@ function renderKpis(data) {
   const budget = data.sections.find(s => s.category.startsWith('Budget'));
   const wrap = document.getElementById('budgetKpis');
   wrap.innerHTML = '';
+
   const tiles = [
     { label: 'Budget Total',    value: fmtCurrency(budget?.metrics?.budget_total) },
     { label: 'Favorability',    value: fmtCurrency(budget?.metrics?.favorability) },
