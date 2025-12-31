@@ -1,0 +1,170 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketing & Regulated Materials Dashboard (2026 Plan)</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="h1">Marketing & Regulated Materials Dashboard — 2026 Plan</div>
+      <div class="h2">Owner: Collin Tam • Org: Marketing Communications • Last updated: <span id="lastUpdated"></span></div>
+      <div class="row" style="gap:8px;margin-top:8px;">
+        <span class="badge">Strategic & Run Initiatives</span>
+        <span class="badge">Member Experience</span>
+        <span class="badge">Brand Preference</span>
+        <span class="badge">Data & Reporting</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Auto-generated KPI cards -->
+    <section class="grid" id="kpiGrid"></section>
+
+    <section class="card">
+      <h3>Budget Performance</h3>
+      <p class="sub">Variance vs. budget and target bounds</p>
+      <div class="kpi" id="budgetKpis"></div>
+      <canvas id="budgetChart" height="120"></canvas>
+    </section>
+
+    <section class="card">
+      <h3>Initiatives — Baseline vs. 2026 Targets</h3>
+      <p class="sub">Compact view of major workstreams and goals</p>
+      <table class="table" id="initTable">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Communication Theme</th>
+            <th>Baseline (2025)</th>
+            <th>Goals / Targets (2026)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3>Notes & Assumptions</h3>
+      <ul class="small">
+        <li>Where baselines reference prior reports (e.g., 2023–24), placeholders are shown until data is linked.</li>
+        <li>Shipping SLAs expressed in days; target improvements highlighted in context.</li>
+        <li>Budget variance target: ±2% for 2026.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container small">© 2026 Collin Tam • Built for GitHub Pages. Edit <code>data.json</code> to update content without touching HTML.</div>
+  </footer>
+
+<script>
+async function loadData() {
+  const res = await fetch('data.json');
+  return await res.json();
+}
+function fmtCurrency(n) { return n==null?'-': new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n); }
+function fmtPct(n) { return n==null?'-': `${n.toFixed(2)}%`; }
+
+function renderTable(sections) {
+  const tbody = document.querySelector('#initTable tbody');
+  tbody.innerHTML = '';
+  sections.forEach(s => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${s.category}</td>
+                    <td>${s.communication}</td>
+                    <td>${s.baseline}</td>
+                    <td>${s.goal}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderKpis(data) {
+  const budget = data.sections.find(s => s.category.startsWith('Budget'));
+  const wrap = document.getElementById('budgetKpis');
+  wrap.innerHTML = '';
+  const tiles = [
+    { label: 'Budget Total',    value: fmtCurrency(budget?.metrics?.budget_total) },
+    { label: 'Favorability',    value: fmtCurrency(budget?.metrics?.favorability) },
+    { label: 'Variance (2025)', value: fmtPct(budget?.metrics?.variance_pct || 0) }
+  ];
+  tiles.forEach(t => {
+    const div = document.createElement('div');
+    div.className = 'tile';
+    div.innerHTML = `<div class="label">${t.label}</div><div class="value">${t.value}</div>`;
+    wrap.appendChild(div);
+  });
+
+  const grid = document.getElementById('kpiGrid');
+  grid.innerHTML = '';
+
+  // Derived KPI cards (examples)
+  const medsupp = data.sections.find(s => s.category === 'MedSupp Mailings' && s.metrics);
+  const ifp     = data.sections.find(s => s.category === 'IFP Renewal Kits' && s.metrics);
+
+  const makeCard = (title, subtitle, contentHtml) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<h3>${title}</h3><div class="sub">${subtitle}</div>${contentHtml}`;
+    grid.appendChild(card);
+  };
+
+  if (medsupp) {
+    const target = medsupp.metrics.cms_cost_shares * (1 - (medsupp.metrics.target_reduction_pct/100));
+    makeCard('MedSupp Cost Shares', 'Target reduction 25%',
+      `<div class="kpi">
+        <div class="tile"><div class="label">Baseline</div><div class="value">${fmtCurrency(medsupp.metrics.cms_cost_shares)}</div></div>
+        <div class="tile"><div class="label">Target (−25%)</div><div class="value">${fmtCurrency(target)}</div></div>
+        <div class="tile"><div class="label">Gap</div><div class="value">${fmtCurrency(medsupp.metrics.cms_cost_shares - target)}</div></div>
+      </div>`);
+  }
+
+  if (ifp) {
+    const cardHtml = `<div class="kpi">
+        <div class="tile"><div class="label">Baseline Cost</div><div class="value">${fmtCurrency(ifp.metrics.cost)}</div></div>
+        <div class="tile"><div class="label">Target Cost</div><div class="value">${fmtCurrency(ifp.metrics.target_cost)}</div></div>
+        <div class="tile"><div class="label">Visits (baseline)</div><div class="value">${ifp.metrics.visits.toLocaleString()}</div></div>
+      </div>`;
+    makeCard('IFP Renewal Kits', 'Cost & Engagement Targets', cardHtml);
+  }
+}
+
+function renderBudgetChart(data) {
+  const budget = data.sections.find(s => s.category.startsWith('Budget'));
+  const ctx = document.getElementById('budgetChart');
+  const variance = budget?.metrics?.variance_pct || 0;
+  const target   = budget?.metrics?.target_variance_pct || 2;
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Variance (2025)', 'Target Bound (±2%)'],
+      datasets: [{
+        label: 'Percentage',
+        data: [variance, target],
+        backgroundColor: ['#4db6ff', '#2ecc71']
+      }]
+    },
+    options: {
+      scales: { y: { beginAtZero: true, ticks: { callback: (v) => v + '%' } } },
+      plugins: { legend: { display: false } }
+    }
+  });
+}
+
+(async function init(){
+  document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString();
+  const data = await loadData();
+  renderTable(data.sections);
+  renderKpis(data);
+  renderBudgetChart(data);
+})();
+</script>
+</body>
+</html>
