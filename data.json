@@ -1,0 +1,143 @@
+
+{
+  "title": "Marketing & Regulated Materials Dashboard (2026 Plan)",
+  "owner": "Collin Tam",
+  "sections": [
+    {
+      "category": "Budget (Bob)",
+      "communication": "Operate within the budget target",
+      "baseline": "Trending to $356,349.68 favorability against a 6+6 budget of $7,484,782.30, or at 4.76% variance…",
+      "goal": "Operate within +/- 2% within 2026 budget",
+      "metrics": {
+        "budget_total": 7484782.3,
+        "favorability": 356349.68,
+        "variance_pct": 4.76,
+        "target_variance_pct": 2.0
+      }
+    },
+    {
+      "category": "Medicare Enrollment kits (incl. MAPD and MedSupp)",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "Broker kit preorders in ENG in-home 10/1; SPA kits ready 10/1, KOR and CHI kits 10/9; Avg. ship for broker kits October = 7-14 days; Avg. ship for DS kits October = 7-14 days",
+      "goal": "Broker kit preorders in ENG in-home 10/1; SPA, KOR and CHI broker kits live 10/1; Avg. ship for broker kits October = 2-3 days; Avg. ship for DS kits October = 2-3 days; All storefront materials available 10/1; No reprints due to Marketing error"
+    },
+    {
+      "category": "Medicare Enrollment kits (incl. MAPD and MedSupp)",
+      "communication": "Member Experience Incentive Targets",
+      "baseline": "See 2023-24 report for baseline",
+      "goal": "Maintain or exceed quantitative survey scores for material usefulness and benefit understanding"
+    },
+    {
+      "category": "MedSupp Mailings",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "Data has errors on most months (quantify?); Timeliness: Rate Action in-home >60 days of eff. date, CMS Cost shares by 12/31, Cred/non-cred by 9/30.",
+      "goal": "Zero defects on Rate Action mailings, no resends; Timeliness: Rate Action in-home >60 days of eff. Date, CMS Cost shares in-home by 12/31, Cred/non-cred by 9/30"
+    },
+    {
+      "category": "MedSupp Mailings",
+      "communication": "Hit the annual operating plan",
+      "baseline": "CMS Cost Shares = ~$320k (excl. envelopes)",
+      "goal": "Reduce CMS Cost Shares by 25%",
+      "metrics": {
+        "cms_cost_shares": 320000,
+        "target_reduction_pct": 25
+      }
+    },
+    {
+      "category": "IFP Renewal Kits",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "Mailed on 10/20; 175k rate mailings due to font issue",
+      "goal": "Mail by 10/17; No resends - 100% accuracy"
+    },
+    {
+      "category": "IFP Renewal Kits",
+      "communication": "Hit the annual operating plan",
+      "baseline": "Cost: ~$2.2M; Online Renewal Center visits: ~2k; Calls to Team Echo: <100",
+      "goal": "Reduce IFP Renewal Kits costs by $200k, to $2.0M (includes envelopes and programming); Online Renewal Center visits + saves calls: >2k",
+      "metrics": {
+        "cost": 2200000,
+        "target_cost": 2000000,
+        "visits": 2000,
+        "target_visits": 2000,
+        "calls": 100,
+        "target_calls": 100
+      }
+    },
+    {
+      "category": "IFP Renewal Kits",
+      "communication": "Member Experience Incentive Targets",
+      "baseline": "See 2023-24 report for baseline",
+      "goal": "(TBD)"
+    },
+    {
+      "category": "IFP Renewal Kits",
+      "communication": "Brand Preference",
+      "baseline": "Legal enclosures are old and in various design styles",
+      "goal": "Redesign one IFP Renewal legal enclosure in brand style by May 1"
+    },
+    {
+      "category": "e-ANOC",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "in-home by 9/30",
+      "goal": "in-home by 9/30"
+    },
+    {
+      "category": "Web",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "MAPD pages completed by 10/1; IFP pages completed by 10/1",
+      "goal": "MAPD pages completed by 10/1; IFP pages completed by 10/1"
+    },
+    {
+      "category": "Web",
+      "communication": "Hit the annual operating plan",
+      "baseline": "GMAPD microsites for materials postings - only 4 Premier",
+      "goal": "GMAPD microsites - build for Core and L&T and reduce ANOC costs by $35k (~$10 * 3,500 members)",
+      "metrics": {
+        "anoc_cost_reduction": 35000
+      }
+    },
+    {
+      "category": "Web",
+      "communication": "Member Experience Incentive Targets",
+      "baseline": "IFP Changes Guides online (a first!); IFP web pages enhanced based on business need, ideation and UX input",
+      "goal": "Enhance regulated web pages leveraging UX Team, analytics, and business partner inputs; Create a Digital Renewal Experience, measure visits (baseline year 1) - pending project approval"
+    },
+    {
+      "category": "IFP Enrollment Confirmation Letters",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "n/a",
+      "goal": "Audit and update IFP enrollment confirmation letters for desired experience per I&B team by end of Q1"
+    },
+    {
+      "category": "Medi-Cal Annual Mailing",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "in-home between 7/17 and 7/19; ~100k remailings due to BIS address issue; No content errors",
+      "goal": "In-home 7/15/2026; Data error free and pulled from reliable source; No content errors"
+    },
+    {
+      "category": "Medi-Cal Annual Mailing",
+      "communication": "Brand Preference",
+      "baseline": "n/a",
+      "goal": "Update Medi-Cal Annual fliers for brand look and 6th grade reading level by June 1"
+    },
+    {
+      "category": "Medi-Cal Redetermination Campaign",
+      "communication": "Hit the annual operating plan",
+      "baseline": "Updated design to start mailing Jan 2026; No issues",
+      "goal": "Consider cost savings here?"
+    },
+    {
+      "category": "All Regulated materials",
+      "communication": "Deliver Top Strategic and Run Initiatives On Time and On Budget",
+      "baseline": "met",
+      "goal": "Ensure any CAPs are closed on time and 80% of any regulatory audits are satisfactory or better"
+    },
+    {
+      "category": "Data Reporting and Dashboarding",
+      "communication": "Position Blue Shield for long-term success",
+      "baseline": "limited reporting and monitoring",
+      "goal": "Create reporting that shows how each mailing's qty, dates sent, % on time, channel, language; Engagement dashboarding - CTR to digital, page views, click-to-call; Monitor completeness and timeliness of key mailings - IFP Renewal, Medi-Cal Annual Mailing, MedSupp letters - by Oct. 1; Support ongoing Marketing data requests by consulting with Health Data Analytics team+"
+    }
+  ]
+}
+``
